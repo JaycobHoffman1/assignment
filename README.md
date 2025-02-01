@@ -1,5 +1,5 @@
-# Assignment
+# Assignment - API Documentation
 
 - Author: Jaycob Hoffman
 
-- Date: 27 January 2025
+- Date: 31 January 2025

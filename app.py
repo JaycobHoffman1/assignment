@@ -11,6 +11,7 @@ from models.product import Product
 from models.production import Production
 from models.user import User
 from models.role import Role
+from flask_swagger_ui import get_swaggerui_blueprint
 
 from routes.customerBP import customer_blueprint
 from routes.employeeBP import employee_blueprint
@@ -18,6 +19,17 @@ from routes.orderBP import order_blueprint
 from routes.productBP import product_blueprint
 from routes.productionBP import production_blueprint
 from routes.userBP import user_blueprint
+
+SWAGGER_URL = '/api/docs'
+API_URL = '/static/swagger.yaml'
+
+swaggerui_bluerint = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': 'Factory API'
+    }
+)
 
 def create_app():
     app = Flask(__name__)

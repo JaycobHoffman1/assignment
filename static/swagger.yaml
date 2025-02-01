@@ -1,0 +1,173 @@
+swagger: '2.0'
+
+info:
+  title: 'Factory API'
+  description: 'This is an API for a factory management system.'
+  version: '1.0.0'
+
+host:
+  '127.0.0.1:5000'
+
+schemes:
+  - 'http'
+
+consumes: 
+  - 'application/json'
+
+produces:
+  - 'application/json'
+
+paths:
+
+  /customers:
+
+    post:
+      summary: Creates a new customer.
+      consumes:
+        - application/json
+      requestBody:
+        required: True
+        content:
+          id:
+            type: integer
+          name:
+            type: string
+          email:
+            type: string
+          phone:
+            type: string
+      responses:
+        '201':
+          description: Created
+        '429':
+          description: Too many requests
+
+  /employees:
+
+    post:
+      summary: Creates a new employee.
+      consumes:
+        - application/json
+      requestBody:
+        required: True
+        content:
+          id:
+            type: integer
+          name:
+            type: string
+          position:
+            type: string
+      responses:
+        '201':
+          description: Created
+        '429':
+          description: Too many requests
+
+  /orders:
+
+    post:
+      summary: Creates a new order.
+      consumes:
+        - application/json
+      requestBody:
+        required: True
+        content:
+          id:
+            type: integer
+          customer_id:
+            type: integer
+          product_id:
+            type: integer
+          quantity:
+            type: integer
+          total_price:
+            type: float
+      responses:
+        '201':
+          description: Created
+        '429':
+          description: Too many requests
+
+  /products:
+
+    post:
+      summary: Creates a new product.
+      consumes:
+        - application/json
+      requestBody:
+        required: True
+        content:
+          id:
+            type: integer
+          name:
+            type: string
+          price:
+            type: float
+      responses:
+        '201':
+          description: Created
+        '429':
+          description: Too many requests
+
+  /production:
+
+    post:
+      summary: Adds new entry into the "production data" model.
+      consumes:
+        - application/json
+      requestBody:
+        required: True
+        content:
+          id:
+            type: integer
+          product_id:
+            type: integer
+          quantity_produced:
+            type: integer
+          date_produced:
+            type: string
+      responses:
+        '201':
+          description: Created
+        '429':
+          description: Too many requests
+
+  /orders/paginate:
+
+    get:
+      summary: Gets list of orders (in paginated format)
+      responses:
+        '200':
+          description: Successful request
+        '429':
+          description: Too many requests
+      content:
+        application/json:
+          id:
+            type: integer
+          customer_id:
+            type: integer
+          product_id:
+            type: integer
+          quantity:
+            type: integer
+          total_price:
+            type: float
+
+  /products/paginate:
+
+    get:
+      summary: Gets list of products (in paginated format)
+      responses:
+        '200':
+          description: Successful request
+        '429':
+          description: Too many requests
+      content:
+        application/json:
+          id:
+            type: integer
+          name:
+            type: string
+          price:
+            type: float
